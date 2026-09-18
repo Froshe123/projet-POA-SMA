@@ -1,5 +1,5 @@
 /*
- * Base de code fournie -- projet "Robot de reconfort" (traduction en C).
+ * Base de code fournie -- projet "Robot de reconfort".
  *
  * Ce module fait DEUX choses, et rien d'autre :
  *
