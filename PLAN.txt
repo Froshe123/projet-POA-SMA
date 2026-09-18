@@ -24,7 +24,7 @@ chemin : networkx, scipy.sparse.csgraph, igraph interdits) :
   - une structure cyclique pour la roue de Plutchik et les colonnes de
     l'armoire (meme logique, meme code si possible).
 
-Comme demo.py ne simule rien, il faut en plus ecrire un ENVIRONNEMENT /
+Comme demo.c ne simule rien, il faut en plus ecrire un ENVIRONNEMENT /
 SIMULATEUR : lui seul a le droit de lire le champ "grille" de la carte et le
 champ "objet" des casiers. Il calcule la perception a chaque tour, applique
 les actions, verifie leur legalite, et alimente la boucle. L'agent, lui, ne
@@ -134,7 +134,7 @@ A LA FIN, ENSEMBLE
     montage) : le robot en marche sur une carte, du depart a la livraison ;
     un affichage texte dans le terminal suffit, cadrer un moment ou le
     robot se cogne a un mur et change d'itineraire.
-  - README (squelette dans base_fournie/MODELE_README.md) : comment
+  - README (squelette dans base_fournie_c/MODELE_README.md) : comment
     lancer, comment tester, ce qui marche, ce qui ne marche pas.
   - rendu.json : declarer la commande de lancement exacte.
 
