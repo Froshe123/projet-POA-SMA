@@ -29,7 +29,7 @@ ELIOTT = [
  ("Roue", "roue_avancer : bouclage dans [0, n-1]", FAIT, "roue.cpp : pas négatifs gérés"),
  ("Roue", "roue_distance : plus court côté", FAIT, "roue.cpp : résultat dans [0, n/2]"),
  ("Environnement", "struct Environnement::Etat", FAIT, "grille, robot, sélecteur, armoire 2D (optional), positions fixes, résidents, objet porté, résident visé, départs"),
- ("Environnement", "Makefile : environnement.o dans ROBOT", COURS, "conflit de fusion commité : garder choix_casier.o ET environnement.o"),
+ ("Environnement", "Makefile : environnement.o dans ROBOT", FAIT, "conflit de fusion réparé"),
  ("Environnement", "Destructeur ~Environnement()", COURS, "= default, après la struct"),
  ("Environnement", "Constructeur (lecture carte + armoire)", TODO, "paire_entiers ; casiers JSON -> armoire[ligne][colonne]"),
  ("Environnement", "connaissances()", TODO, "tout SAUF la grille et les objets"),
@@ -60,7 +60,7 @@ ENSEMBLE = [
 
 PROCHAINES = [
  ("Axel", "memoire.cpp, puis agent.cpp (decider, appliquer, bilan)."),
- ("Eliott", "réparer le Makefile et le destructeur, puis écrire le constructeur d'Environnement."),
+ ("Eliott", "corriger le destructeur, puis écrire le constructeur d'Environnement."),
 ]
 
 # --------------------------------------------------------------------------
