@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
 """Génère suivi/AVANCEMENT.pdf (Eliott + Axel) à partir des listes ci-dessous.
-Pour mettre à jour : changer l'état (FAIT / EN COURS / A FAIRE) et la note,
-puis relancer :  python3 suivi/avancement.py   (nécessite reportlab)."""
-import datetime, os
-from reportlab.lib import colors
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import cm
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+Pour mettre à jour : changer l'état (FAIT / EN COURS / A FAIRE / BLOQUÉ), la note
+et les prochaines étapes, puis relancer :  python3 suivi/avancement.py
+Aucune dépendance : le PDF est écrit à la main (polices standard Helvetica)."""
+import datetime, os, textwrap
 
 FAIT, COURS, TODO, BLOQUE = "FAIT", "EN COURS", "A FAIRE", "BLOQUÉ"
 
@@ -29,65 +25,172 @@ AXEL = [
  ("Tests", "Test 5 : règle de repli", FAIT, "tests.cpp : exact, intensité, voisine, armoire vide, ordre respecté"),
 ]
 
-# Partie d'Eliott : lue dans son generer_suivi.py (il reste la source de vérité)
-import importlib.util
-_spec = importlib.util.spec_from_file_location("generer_suivi", os.path.join(os.path.dirname(os.path.abspath(__file__)), "generer_suivi.py"))
-_el = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_el)
-_ETAT = {"fait": FAIT, "encours": COURS, "afaire": TODO, "bloque": BLOQUE}
-_rows = [(titre.split(". ", 1)[-1], d, _ETAT[st], "") for titre, items in _el.SECTIONS for st, d in items]
-_n_ens = len(_el.SECTIONS[-1][1])
-ELIOTT = _rows[:-_n_ens]
-ENSEMBLE = _rows[-_n_ens:]
-PROCHAINE_ELIOTT = " ".join(_el.PROCHAINE)
+ELIOTT = [
+ ("Roue", "roue_avancer : bouclage dans [0, n-1]", FAIT, "roue.cpp : pas négatifs gérés"),
+ ("Roue", "roue_distance : plus court côté", FAIT, "roue.cpp : résultat dans [0, n/2]"),
+ ("Environnement", "struct Environnement::Etat", FAIT, "grille, robot, sélecteur, armoire 2D (optional), positions fixes, résidents, objet porté, résident visé, départs"),
+ ("Environnement", "Makefile : environnement.o dans ROBOT", COURS, "conflit de fusion commité : garder choix_casier.o ET environnement.o"),
+ ("Environnement", "Destructeur ~Environnement()", COURS, "= default, après la struct"),
+ ("Environnement", "Constructeur (lecture carte + armoire)", TODO, "paire_entiers ; casiers JSON -> armoire[ligne][colonne]"),
+ ("Environnement", "connaissances()", TODO, "tout SAUF la grille et les objets"),
+ ("Environnement", "percevoir()", TODO, "4 voisins N/S/E/O, devant_armoire, contenu_casier"),
+ ("Environnement", "viser_resident(), robot(), selecteur()", TODO, ""),
+ ("Environnement", "executer() : légalité des actions", BLOQUE, "section 3.4 + annexe C à relire"),
+ ("Validation 5.6", "Fichier absent / illisible / pas UTF-8, JSON invalide", TODO, ""),
+ ("Validation 5.6", "Champ obligatoire absent ou mauvais type", TODO, "dans les 4 fichiers"),
+ ("Validation 5.6", "Grille non rectangulaire, dimensions, position hors grille", TODO, ""),
+ ("Validation 5.6", "Symboles P / A / D / R cohérents avec les positions", TODO, ""),
+ ("Validation 5.6", "Résidents en double, autre carte, résident absent", TODO, ""),
+ ("Validation 5.6", "Casiers : hors armoire, doublon, étiquette, casier_depart", TODO, ""),
+ ("Validation 5.6", "Dictionnaire : émotion/intensité inconnue, mot en double", TODO, ""),
+ ("Validation 5.6", "Erreur -> stderr, code non nul, aucune trace", TODO, ""),
+ ("Affichage", "Grille redessinée à chaque pas", TODO, "robot + murs découverts (débogage, vidéo)"),
+ ("Tests", "Test 4 : sélecteur, bouclage colonne 7 <-> 0", TODO, ""),
+ ("Tests", "Test 6 : un fichier cassé par catégorie de 5.6", TODO, ""),
+ ("Tests", "Test 7 : résident muré (avec Axel)", TODO, ""),
+]
 
-COL = {FAIT: colors.HexColor("#2e7d32"), COURS: colors.HexColor("#ef8f00"), TODO: colors.HexColor("#9e9e9e"), BLOQUE: colors.HexColor("#c62828")}
+ENSEMBLE = [
+ ("Intégration", "main.cpp : boucle Environnement <-> Agent", TODO, "trace, livraisons, résumé"),
+ ("Relecture", "Relecture croisée", TODO, "Eliott : agent/graphe/carte_robot ; Axel : environnement/roue"),
+ ("Rendu", "Rapport 3 pages", TODO, "architecture, replanification, repli, 3 échecs"),
+ ("Rendu", "Vidéo 1 min 30", TODO, "robot qui se cogne et replanifie"),
+ ("Rendu", "README + rendu.json", TODO, "commande de test ; C++, make, commande, vidéo"),
+]
+
+PROCHAINES = [
+ ("Axel", "memoire.cpp, puis agent.cpp (decider, appliquer, bilan)."),
+ ("Eliott", "réparer le Makefile et le destructeur, puis écrire le constructeur d'Environnement."),
+]
+
+# --------------------------------------------------------------------------
+# Rendu PDF minimal (A4, Helvetica, encodage WinAnsi)
+# --------------------------------------------------------------------------
 PRET = {FAIT: 1.0, COURS: 0.5, TODO: 0.0, BLOQUE: 0.0}
-LARG = 17.8 * cm
+COUL = {FAIT: (0.18, 0.49, 0.20), COURS: (0.94, 0.56, 0.0), TODO: (0.62, 0.62, 0.62), BLOQUE: (0.78, 0.16, 0.16)}
+W, H, M = 595, 842, 45
+L = W - 2 * M
 
 
 def pourcentage(taches):
     return round(100 * sum(PRET[t[2]] for t in taches) / len(taches))
 
 
-def section(el, ss, n, titre, role, taches):
+def esc(s):
+    return s.replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
+
+
+class Doc:
+    def __init__(self):
+        self.pages, self.y = [], 0
+        self.nouvelle_page()
+
+    def nouvelle_page(self):
+        self.pages.append([])
+        self.y = H - M
+
+    def place(self, h):
+        if self.y - h < M:
+            self.nouvelle_page()
+
+    def texte(self, x, y, s, t=10, gras=False, c=(0, 0, 0)):
+        self.pages[-1].append("BT %g %g %g rg /%s %g Tf %g %g Td (%s) Tj ET"
+                              % (c[0], c[1], c[2], "F2" if gras else "F1", t, x, y, esc(s)))
+
+    def rect(self, x, y, w, h, c):
+        self.pages[-1].append("%g %g %g rg %g %g %g %g re f" % (c[0], c[1], c[2], x, y, w, h))
+
+    def trait(self, y, g=0.75):
+        self.pages[-1].append("%g G 0.5 w %g %g m %g %g l S" % (g, M, y, W - M, y))
+
+    def ecrire(self, chemin):
+        objs = [None, None,
+                b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>",
+                b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>"]
+        kids = []
+        for ops in self.pages:
+            data = "\n".join(ops).encode("cp1252", "replace")
+            objs.append(b"<< /Length %d >>\nstream\n" % len(data) + data + b"\nendstream")
+            objs.append(("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 %d %d] /Resources << /Font "
+                         "<< /F1 3 0 R /F2 4 0 R >> >> /Contents %d 0 R >>" % (W, H, len(objs))).encode())
+            kids.append(len(objs))
+        objs[0] = b"<< /Type /Catalog /Pages 2 0 R >>"
+        objs[1] = ("<< /Type /Pages /Kids [%s] /Count %d >>"
+                   % (" ".join("%d 0 R" % k for k in kids), len(kids))).encode()
+        out, offs = bytearray(b"%PDF-1.4\n"), []
+        for i, o in enumerate(objs, 1):
+            offs.append(len(out))
+            out += b"%d 0 obj\n" % i + o + b"\nendobj\n"
+        xref = len(out)
+        out += b"xref\n0 %d\n0000000000 65535 f \n" % (len(objs) + 1)
+        out += b"".join(b"%010d 00000 n \n" % o for o in offs)
+        out += b"trailer\n<< /Size %d /Root 1 0 R >>\nstartxref\n%d\n%%%%EOF\n" % (len(objs) + 1, xref)
+        with open(chemin, "wb") as f:
+            f.write(out)
+
+
+def barre(d, pct):
+    d.rect(M, d.y, L, 7, (0.88, 0.88, 0.88))
+    if pct:
+        d.rect(M, d.y, L * pct / 100, 7, COUL[FAIT])
+
+
+def section(d, titre, role, taches):
+    d.place(70)
     nb = {k: sum(1 for t in taches if t[2] == k) for k in (FAIT, COURS, TODO, BLOQUE)}
     pct = pourcentage(taches)
-    el.append(Paragraph(titre, ss["Heading1"]))
-    el.append(Paragraph("%s — <b>%d %%</b> : %d fait, %d en cours, %d à faire, %d bloqué" % (role, pct, nb[FAIT], nb[COURS], nb[TODO], nb[BLOQUE]), ss["Normal"]))
-    barre = Table([["", ""]], colWidths=[LARG * pct / 100 or 0.01, LARG * (100 - pct) / 100 or 0.01], rowHeights=[0.35 * cm])
-    barre.setStyle(TableStyle([("BACKGROUND", (0, 0), (0, 0), COL[FAIT]), ("BACKGROUND", (1, 0), (1, 0), colors.HexColor("#e0e0e0"))]))
-    el += [Spacer(1, 0.2 * cm), barre, Spacer(1, 0.3 * cm)]
-    rows = [["Section", "Tâche", "État", "Détail"]]
+    d.texte(M, d.y, titre, 15, gras=True)
+    d.y -= 15
+    d.texte(M, d.y, "%s - %d %% : %d fait, %d en cours, %d à faire, %d bloqué"
+            % (role, pct, nb[FAIT], nb[COURS], nb[TODO], nb[BLOQUE]), 9, c=(0.35, 0.35, 0.35))
+    d.y -= 14
+    barre(d, pct)
+    d.y -= 18
+    precedente = None
     for s, t, e, note in taches:
-        rows.append([Paragraph(s, n), Paragraph(t, n), Paragraph('<font color="white"><b>%s</b></font>' % e, n), Paragraph(note, n)])
-    tb = Table(rows, colWidths=[2.8 * cm, 7.4 * cm, 1.9 * cm, 5.7 * cm], repeatRows=1)
-    st = [("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#263238")), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-          ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#bdbdbd")), ("VALIGN", (0, 0), (-1, -1), "MIDDLE")]
-    for i, t in enumerate(taches, 1):
-        st.append(("BACKGROUND", (2, i), (2, i), COL[t[2]]))
-    tb.setStyle(TableStyle(st))
-    el.append(tb)
+        lignes = textwrap.wrap(note, 70) if note else []
+        d.place(16 + 11 * len(lignes) + (18 if s != precedente else 0))
+        if s != precedente:
+            d.texte(M, d.y, s, 10, gras=True, c=(0.15, 0.20, 0.22))
+            d.y -= 4
+            d.trait(d.y)
+            d.y -= 13
+            precedente = s
+        d.rect(M, d.y - 2, 52, 11, COUL[e])
+        d.texte(M + 4, d.y + 1, e, 7, gras=True, c=(1, 1, 1))
+        d.texte(M + 60, d.y, t, 9.5)
+        d.y -= 11
+        for l in lignes:
+            d.texte(M + 60, d.y, l, 8, c=(0.4, 0.4, 0.4))
+            d.y -= 10
+        d.y -= 4
+    d.y -= 14
 
 
 def main():
-    ss = getSampleStyleSheet()
-    n = ParagraphStyle("n", parent=ss["BodyText"], fontSize=8.5, leading=10.5)
-    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "AVANCEMENT.pdf")
-    doc = SimpleDocTemplate(out, pagesize=A4, leftMargin=1.6 * cm, rightMargin=1.6 * cm, topMargin=1.5 * cm, bottomMargin=1.5 * cm,
-                            title="Avancement - Projet Robot de Reconfort", author="Eliott & Axel")
+    d = Doc()
     total = pourcentage(AXEL + ELIOTT + ENSEMBLE)
-    el = [Paragraph("Robot de Réconfort — avancement du binôme", ss["Title"]),
-          Paragraph("Mis à jour le %s — projet global : <b>%d %%</b>" % (datetime.date.today().strftime("%d/%m/%Y"), total), ss["Normal"])]
-    section(el, ss, n, "Axel (B)", "Agent &amp; décision", AXEL)
-    el.append(Spacer(1, 0.5 * cm))
-    section(el, ss, n, "Eliott (A)", "Monde &amp; validation", ELIOTT)
-    el.append(Spacer(1, 0.5 * cm))
-    section(el, ss, n, "Ensemble", "À la fin, à deux", ENSEMBLE)
-    el += [Spacer(1, 0.5 * cm), Paragraph(
-        "<b>Prochaines étapes</b><br/>Axel : memoire.cpp et choix_casier.cpp, puis itinéraire du sélecteur et agent.cpp.<br/>"
-        "Eliott : " + PROCHAINE_ELIOTT, ss["Normal"])]
-    doc.build(el)
+    d.texte(M, d.y, "Robot de Réconfort - avancement du binôme", 19, gras=True)
+    d.y -= 18
+    d.texte(M, d.y, "Mis à jour le %s - projet global : %d %%"
+            % (datetime.date.today().strftime("%d/%m/%Y"), total), 10, c=(0.35, 0.35, 0.35))
+    d.y -= 12
+    barre(d, total)
+    d.y -= 22
+    d.texte(M, d.y, "Prochaines étapes", 11, gras=True)
+    d.y -= 14
+    for qui, quoi in PROCHAINES:
+        for i, l in enumerate(textwrap.wrap(quoi, 85)):
+            if i == 0:
+                d.texte(M, d.y, qui + " :", 9.5, gras=True)
+            d.texte(M + 45, d.y, l, 9.5)
+            d.y -= 12
+    d.y -= 14
+    section(d, "Axel (B)", "Agent & décision", AXEL)
+    section(d, "Eliott (A)", "Monde & validation", ELIOTT)
+    section(d, "Ensemble", "À la fin, à deux", ENSEMBLE)
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "AVANCEMENT.pdf")
+    d.ecrire(out)
     print(out, "Axel", pourcentage(AXEL), "% / Eliott", pourcentage(ELIOTT), "%")
 
 
