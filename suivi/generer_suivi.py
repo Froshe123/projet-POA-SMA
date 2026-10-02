@@ -12,8 +12,8 @@ MAJ = "2 octobre 2026"
 
 # Statuts : "fait", "encours", "afaire", "bloque"
 PROCHAINE = [
-    "Ecrire struct Environnement::Etat dans environnement.cpp (champs seulement,",
-    "un commentaire par champ), puis la faire relire avant d'attaquer le constructeur.",
+    "Corriger le destructeur (Environnement::~Environnement() = default;), puis",
+    "ecrire le constructeur : remplir Etat a partir des JSON carte et armoire.",
 ]
 
 SECTIONS = [
@@ -24,10 +24,11 @@ SECTIONS = [
         ("fait", "Commit"),
     ]),
     ("2. Environnement / simulateur (environnement.cpp)", [
-        ("afaire", "Ajouter environnement.o a ROBOT dans le Makefile"),
-        ("encours", "struct Environnement::Etat : grille, robot, selecteur, casiers 2D, "
-                    "positions, resident vise, objet porte"),
-        ("afaire", "Constructeur : lire carte + armoire (paire_entiers, casiers -> grille 2D)"),
+        ("fait", "Ajouter environnement.o a ROBOT dans le Makefile"),
+        ("fait", "struct Environnement::Etat : grille, robot, selecteur, armoire 2D "
+                 "(optional), positions fixes, residents, objet porte, resident vise, departs"),
+        ("encours", "Destructeur ~Environnement() = default (apres la struct)"),
+        ("encours", "Constructeur : lire carte + armoire (paire_entiers, casiers -> grille 2D)"),
         ("afaire", "connaissances() : tout SAUF la grille et les objets"),
         ("afaire", "percevoir() : 4 voisins N/S/E/O, devant_armoire, contenu_casier"),
         ("afaire", "viser_resident(), robot(), selecteur()"),
