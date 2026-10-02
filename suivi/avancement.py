@@ -31,7 +31,7 @@ ELIOTT = [
  ("Environnement", "struct Environnement::Etat", FAIT, "grille, robot, sélecteur, armoire 2D (optional), positions fixes, résidents, objet porté, résident visé, départs"),
  ("Environnement", "Makefile : environnement.o dans ROBOT", FAIT, "conflit de fusion réparé"),
  ("Environnement", "Destructeur ~Environnement()", FAIT, "= default, après la struct"),
- ("Environnement", "Constructeur (lecture carte + armoire)", COURS, "paire_entiers ; casiers JSON -> armoire[ligne][colonne]"),
+ ("Environnement", "Constructeur (lecture carte + armoire)", COURS, "fait : grille + 6 positions ; reste : résidents, casiers -> armoire[ligne][colonne]"),
  ("Environnement", "connaissances()", TODO, "tout SAUF la grille et les objets"),
  ("Environnement", "percevoir()", TODO, "4 voisins N/S/E/O, devant_armoire, contenu_casier"),
  ("Environnement", "viser_resident(), robot(), selecteur()", TODO, ""),
@@ -60,7 +60,7 @@ ENSEMBLE = [
 
 PROCHAINES = [
  ("Axel", "memoire.cpp, puis agent.cpp (decider, appliquer, bilan)."),
- ("Eliott", "constructeur d'Environnement : grille, positions, résidents, armoire."),
+ ("Eliott", "constructeur d'Environnement : résidents puis casiers de l'armoire."),
 ]
 
 # --------------------------------------------------------------------------

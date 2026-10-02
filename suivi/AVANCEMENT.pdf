@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
 endobj
 5 0 obj
-<< /Length 5903 >>
+<< /Length 5901 >>
 stream
 BT 0 0 0 rg /F2 19 Tf 45 797 Td (Robot de Réconfort - avancement du binôme) Tj ET
 BT 0.35 0.35 0.35 rg /F1 10 Tf 45 779 Td (Mis à jour le 02/10/2026 - projet global : 40 %) Tj ET
@@ -22,7 +22,7 @@ BT 0 0 0 rg /F2 11 Tf 45 745 Td (Prochaines étapes) Tj ET
 BT 0 0 0 rg /F2 9.5 Tf 45 731 Td (Axel :) Tj ET
 BT 0 0 0 rg /F1 9.5 Tf 90 731 Td (memoire.cpp, puis agent.cpp \(decider, appliquer, bilan\).) Tj ET
 BT 0 0 0 rg /F2 9.5 Tf 45 719 Td (Eliott :) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 90 719 Td (constructeur d'Environnement : grille, positions, résidents, armoire.) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 90 719 Td (constructeur d'Environnement : résidents puis casiers de l'armoire.) Tj ET
 BT 0 0 0 rg /F2 15 Tf 45 693 Td (Axel \(B\)) Tj ET
 BT 0.35 0.35 0.35 rg /F1 9 Tf 45 678 Td (Agent & décision - 79 % : 10 fait, 2 en cours, 2 à faire, 0 bloqué) Tj ET
 0.88 0.88 0.88 rg 45 664 505 7 re f
@@ -114,7 +114,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
 endobj
 7 0 obj
-<< /Length 6198 >>
+<< /Length 6271 >>
 stream
 BT 0.15 0.2 0.22 rg /F2 10 Tf 45 797 Td (Environnement) Tj ET
 0.75 G 0.5 w 45 793 m 550 793 l S
@@ -134,95 +134,96 @@ BT 0.4 0.4 0.4 rg /F1 8 Tf 105 709 Td (= default, après la struct) Tj ET
 0.94 0.56 0 rg 45 693 52 11 re f
 BT 1 1 1 rg /F2 7 Tf 49 696 Td (EN COURS) Tj ET
 BT 0 0 0 rg /F1 9.5 Tf 105 695 Td (Constructeur \(lecture carte + armoire\)) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 684 Td (paire_entiers ; casiers JSON -> armoire[ligne][colonne]) Tj ET
-0.62 0.62 0.62 rg 45 668 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 671 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 670 Td (connaissances\(\)) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 659 Td (tout SAUF la grille et les objets) Tj ET
-0.62 0.62 0.62 rg 45 643 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 646 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 645 Td (percevoir\(\)) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 634 Td (4 voisins N/S/E/O, devant_armoire, contenu_casier) Tj ET
-0.62 0.62 0.62 rg 45 618 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 621 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 620 Td (viser_resident\(\), robot\(\), selecteur\(\)) Tj ET
-0.78 0.16 0.16 rg 45 603 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 606 Td (BLOQUÉ) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 605 Td (executer\(\) : légalité des actions) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 594 Td (section 3.4 + annexe C à relire) Tj ET
-BT 0.15 0.2 0.22 rg /F2 10 Tf 45 580 Td (Validation 5.6) Tj ET
-0.75 G 0.5 w 45 576 m 550 576 l S
-0.62 0.62 0.62 rg 45 561 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 564 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 563 Td (Fichier absent / illisible / pas UTF-8, JSON invalide) Tj ET
-0.62 0.62 0.62 rg 45 546 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 549 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 548 Td (Champ obligatoire absent ou mauvais type) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 537 Td (dans les 4 fichiers) Tj ET
-0.62 0.62 0.62 rg 45 521 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 524 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 523 Td (Grille non rectangulaire, dimensions, position hors grille) Tj ET
-0.62 0.62 0.62 rg 45 506 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 509 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 508 Td (Symboles P / A / D / R cohérents avec les positions) Tj ET
-0.62 0.62 0.62 rg 45 491 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 494 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 493 Td (Résidents en double, autre carte, résident absent) Tj ET
-0.62 0.62 0.62 rg 45 476 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 479 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 478 Td (Casiers : hors armoire, doublon, étiquette, casier_depart) Tj ET
-0.62 0.62 0.62 rg 45 461 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 464 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 463 Td (Dictionnaire : émotion/intensité inconnue, mot en double) Tj ET
-0.62 0.62 0.62 rg 45 446 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 449 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 448 Td (Erreur -> stderr, code non nul, aucune trace) Tj ET
-BT 0.15 0.2 0.22 rg /F2 10 Tf 45 433 Td (Affichage) Tj ET
-0.75 G 0.5 w 45 429 m 550 429 l S
-0.62 0.62 0.62 rg 45 414 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 417 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 416 Td (Grille redessinée à chaque pas) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 405 Td (robot + murs découverts \(débogage, vidéo\)) Tj ET
-BT 0.15 0.2 0.22 rg /F2 10 Tf 45 391 Td (Tests) Tj ET
-0.75 G 0.5 w 45 387 m 550 387 l S
-0.62 0.62 0.62 rg 45 372 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 375 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 374 Td (Test 4 : sélecteur, bouclage colonne 7 <-> 0) Tj ET
-0.62 0.62 0.62 rg 45 357 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 360 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 359 Td (Test 6 : un fichier cassé par catégorie de 5.6) Tj ET
-0.62 0.62 0.62 rg 45 342 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 345 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 344 Td (Test 7 : résident muré \(avec Axel\)) Tj ET
-BT 0 0 0 rg /F2 15 Tf 45 315 Td (Ensemble) Tj ET
-BT 0.35 0.35 0.35 rg /F1 9 Tf 45 300 Td (À la fin, à deux - 0 % : 0 fait, 0 en cours, 5 à faire, 0 bloqué) Tj ET
-0.88 0.88 0.88 rg 45 286 505 7 re f
-BT 0.15 0.2 0.22 rg /F2 10 Tf 45 268 Td (Intégration) Tj ET
-0.75 G 0.5 w 45 264 m 550 264 l S
-0.62 0.62 0.62 rg 45 249 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 252 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 251 Td (main.cpp : boucle Environnement <-> Agent) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 240 Td (trace, livraisons, résumé) Tj ET
-BT 0.15 0.2 0.22 rg /F2 10 Tf 45 226 Td (Relecture) Tj ET
-0.75 G 0.5 w 45 222 m 550 222 l S
-0.62 0.62 0.62 rg 45 207 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 210 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 209 Td (Relecture croisée) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 198 Td (Eliott : agent/graphe/carte_robot ; Axel : environnement/roue) Tj ET
-BT 0.15 0.2 0.22 rg /F2 10 Tf 45 184 Td (Rendu) Tj ET
-0.75 G 0.5 w 45 180 m 550 180 l S
-0.62 0.62 0.62 rg 45 165 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 168 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 167 Td (Rapport 3 pages) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 156 Td (architecture, replanification, repli, 3 échecs) Tj ET
-0.62 0.62 0.62 rg 45 140 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 143 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 142 Td (Vidéo 1 min 30) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 131 Td (robot qui se cogne et replanifie) Tj ET
-0.62 0.62 0.62 rg 45 115 52 11 re f
-BT 1 1 1 rg /F2 7 Tf 49 118 Td (A FAIRE) Tj ET
-BT 0 0 0 rg /F1 9.5 Tf 105 117 Td (README + rendu.json) Tj ET
-BT 0.4 0.4 0.4 rg /F1 8 Tf 105 106 Td (commande de test ; C++, make, commande, vidéo) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 684 Td (fait : grille + 6 positions ; reste : résidents, casiers ->) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 674 Td (armoire[ligne][colonne]) Tj ET
+0.62 0.62 0.62 rg 45 658 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 661 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 660 Td (connaissances\(\)) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 649 Td (tout SAUF la grille et les objets) Tj ET
+0.62 0.62 0.62 rg 45 633 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 636 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 635 Td (percevoir\(\)) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 624 Td (4 voisins N/S/E/O, devant_armoire, contenu_casier) Tj ET
+0.62 0.62 0.62 rg 45 608 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 611 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 610 Td (viser_resident\(\), robot\(\), selecteur\(\)) Tj ET
+0.78 0.16 0.16 rg 45 593 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 596 Td (BLOQUÉ) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 595 Td (executer\(\) : légalité des actions) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 584 Td (section 3.4 + annexe C à relire) Tj ET
+BT 0.15 0.2 0.22 rg /F2 10 Tf 45 570 Td (Validation 5.6) Tj ET
+0.75 G 0.5 w 45 566 m 550 566 l S
+0.62 0.62 0.62 rg 45 551 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 554 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 553 Td (Fichier absent / illisible / pas UTF-8, JSON invalide) Tj ET
+0.62 0.62 0.62 rg 45 536 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 539 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 538 Td (Champ obligatoire absent ou mauvais type) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 527 Td (dans les 4 fichiers) Tj ET
+0.62 0.62 0.62 rg 45 511 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 514 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 513 Td (Grille non rectangulaire, dimensions, position hors grille) Tj ET
+0.62 0.62 0.62 rg 45 496 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 499 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 498 Td (Symboles P / A / D / R cohérents avec les positions) Tj ET
+0.62 0.62 0.62 rg 45 481 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 484 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 483 Td (Résidents en double, autre carte, résident absent) Tj ET
+0.62 0.62 0.62 rg 45 466 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 469 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 468 Td (Casiers : hors armoire, doublon, étiquette, casier_depart) Tj ET
+0.62 0.62 0.62 rg 45 451 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 454 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 453 Td (Dictionnaire : émotion/intensité inconnue, mot en double) Tj ET
+0.62 0.62 0.62 rg 45 436 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 439 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 438 Td (Erreur -> stderr, code non nul, aucune trace) Tj ET
+BT 0.15 0.2 0.22 rg /F2 10 Tf 45 423 Td (Affichage) Tj ET
+0.75 G 0.5 w 45 419 m 550 419 l S
+0.62 0.62 0.62 rg 45 404 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 407 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 406 Td (Grille redessinée à chaque pas) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 395 Td (robot + murs découverts \(débogage, vidéo\)) Tj ET
+BT 0.15 0.2 0.22 rg /F2 10 Tf 45 381 Td (Tests) Tj ET
+0.75 G 0.5 w 45 377 m 550 377 l S
+0.62 0.62 0.62 rg 45 362 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 365 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 364 Td (Test 4 : sélecteur, bouclage colonne 7 <-> 0) Tj ET
+0.62 0.62 0.62 rg 45 347 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 350 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 349 Td (Test 6 : un fichier cassé par catégorie de 5.6) Tj ET
+0.62 0.62 0.62 rg 45 332 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 335 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 334 Td (Test 7 : résident muré \(avec Axel\)) Tj ET
+BT 0 0 0 rg /F2 15 Tf 45 305 Td (Ensemble) Tj ET
+BT 0.35 0.35 0.35 rg /F1 9 Tf 45 290 Td (À la fin, à deux - 0 % : 0 fait, 0 en cours, 5 à faire, 0 bloqué) Tj ET
+0.88 0.88 0.88 rg 45 276 505 7 re f
+BT 0.15 0.2 0.22 rg /F2 10 Tf 45 258 Td (Intégration) Tj ET
+0.75 G 0.5 w 45 254 m 550 254 l S
+0.62 0.62 0.62 rg 45 239 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 242 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 241 Td (main.cpp : boucle Environnement <-> Agent) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 230 Td (trace, livraisons, résumé) Tj ET
+BT 0.15 0.2 0.22 rg /F2 10 Tf 45 216 Td (Relecture) Tj ET
+0.75 G 0.5 w 45 212 m 550 212 l S
+0.62 0.62 0.62 rg 45 197 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 200 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 199 Td (Relecture croisée) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 188 Td (Eliott : agent/graphe/carte_robot ; Axel : environnement/roue) Tj ET
+BT 0.15 0.2 0.22 rg /F2 10 Tf 45 174 Td (Rendu) Tj ET
+0.75 G 0.5 w 45 170 m 550 170 l S
+0.62 0.62 0.62 rg 45 155 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 158 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 157 Td (Rapport 3 pages) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 146 Td (architecture, replanification, repli, 3 échecs) Tj ET
+0.62 0.62 0.62 rg 45 130 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 133 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 132 Td (Vidéo 1 min 30) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 121 Td (robot qui se cogne et replanifie) Tj ET
+0.62 0.62 0.62 rg 45 105 52 11 re f
+BT 1 1 1 rg /F2 7 Tf 49 108 Td (A FAIRE) Tj ET
+BT 0 0 0 rg /F1 9.5 Tf 105 107 Td (README + rendu.json) Tj ET
+BT 0.4 0.4 0.4 rg /F1 8 Tf 105 96 Td (commande de test ; C++, make, commande, vidéo) Tj ET
 endstream
 endobj
 8 0 obj
@@ -236,11 +237,11 @@ xref
 0000000121 00000 n 
 0000000218 00000 n 
 0000000320 00000 n 
-0000006275 00000 n 
-0000006411 00000 n 
-0000012661 00000 n 
+0000006273 00000 n 
+0000006409 00000 n 
+0000012732 00000 n 
 trailer
 << /Size 9 /Root 1 0 R >>
 startxref
-12797
+12868
 %%EOF
