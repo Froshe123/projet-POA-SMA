@@ -1,4 +1,5 @@
 #include "interface.hpp"
+#include <memory>
 #include <optional>
 
 struct Environnement::Etat {
@@ -17,3 +18,15 @@ struct Environnement::Etat {
 };
 
 Environnement::~Environnement() = default;
+
+Environnement::Environnement(const JsonValue &carte, const JsonValue &armoire)
+{   
+    etat = std::make_unique<Etat>();
+    const JsonValue &grille_json = *carte.get("grille");
+    for (size_t i = 0; i < grille_json.taille(); i++)
+    {
+        const JsonValue &ligne = *grille_json.index(i);
+        etat->grille.push_back(*ligne.chaine());
+    }
+    
+}
