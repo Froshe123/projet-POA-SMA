@@ -19,14 +19,14 @@ AXEL = [
  ("Planification", "BFS + file (plus court chemin)", FAIT, "graphe.cpp : prochain_pas, file écrite à la main, sans lib"),
  ("Planification", "Replanification à chaque pas", FAIT, "un pas puis recalcul ; PAS_DE_CHEMIN si inaccessible"),
  ("Décision", "Lecture du dictionnaire (6.1)", FAIT, "dictionnaire.cpp : premier mot reconnu, sinon indéterminée"),
- ("Décision", "Choix du casier (6.2) : 15 candidats triés", COURS, "choix_casier.hpp écrit (casiers_a_essayer, prochain_casier) ; .cpp à écrire"),
- ("Décision", "Itinéraire du sélecteur (annexe C)", TODO, "pas_du_selecteur déclaré ; choix vertical/horizontal à implémenter"),
- ("Décision", "Enchaînement des 4 étapes par demande", TODO, "agent.cpp / agent.hpp : action_suivante(...)"),
+ ("Décision", "Choix du casier (6.2) : 15 candidats triés", FAIT, "choix_casier.cpp : casiers_a_essayer, prochain_casier, étiquettes de repli"),
+ ("Décision", "Itinéraire du sélecteur (annexe C)", FAIT, "pas_du_selecteur : vertical d'abord + bouclage des colonnes (C.3, accepté par C.4)"),
+ ("Décision", "Enchaînement des 4 étapes par demande", TODO, "agent.cpp : classe Agent de interface.hpp (decider, appliquer, bilan)"),
  ("Décision", "Gestion des échecs (6.3)", TODO, "résident inaccessible, armoire vide, émotion indéterminée"),
- ("Tests", "Test 1 : planification petite grille", COURS, "test_graphe.cpp couvre la mini-grille B.3 ; à formaliser (assertions)"),
- ("Tests", "Test 2 : replanification (mur découvert)", COURS, "mur ajouté dans test_graphe.cpp, seulement le cas « plus de chemin »"),
- ("Tests", "Test 3 : lecture du dictionnaire", TODO, "un message/émotion + 2 mots connus + aucun mot"),
- ("Tests", "Test 5 : règle de repli", TODO, "exact, repli intensité, repli voisine, rien à distance <= 2"),
+ ("Tests", "Test 1 : planification petite grille", FAIT, "tests.cpp : mini-grille B.3, chemin SSEENE, puis X si bouché"),
+ ("Tests", "Test 2 : replanification (mur découvert)", FAIT, "tests.cpp : murs vus en (1,2), nouveau chemin OSSEENE"),
+ ("Tests", "Test 3 : lecture du dictionnaire", FAIT, "tests.cpp : 8 émotions + 2 mots connus + aucun mot"),
+ ("Tests", "Test 5 : règle de repli", FAIT, "tests.cpp : exact, intensité, voisine, armoire vide, ordre respecté"),
 ]
 
 # Partie d'Eliott : lue dans son generer_suivi.py (il reste la source de vérité)

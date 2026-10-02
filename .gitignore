@@ -2,3 +2,6 @@
 *.o
 base_fournie_c/demo
 base_fournie_c/test_graphe
+.DS_Store
+__pycache__/
+base_fournie_c/tests
