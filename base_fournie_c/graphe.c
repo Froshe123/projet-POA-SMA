@@ -5,7 +5,7 @@ bool est_a_cote(Pos a, Pos b) {
     return (abs(a.l - b.l) + abs(a.c - b.c)) == 1;
 }
 
-//on veut un bfs pour trouver le prochain pas vers l'objet
+//on fait un bfs pour trouver le prochain pas vers lobjet
 char prochain_pas(const CARTE_ROBOT *carte, Pos depart, Pos objet) {
     char premier_pas[HAUTEUR_MAX][LARGEUR_MAX] = {0}; 
     Pos file[HAUTEUR_MAX * LARGEUR_MAX];             
