@@ -1,0 +1,177 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 6241 >>
+stream
+BT 0.0 g /F2 20 Tf 50 792 Td (Robot de reconfort - suivi d'Eliott) Tj ET
+BT 0.4 g /F1 10 Tf 50 772 Td (Partie A : monde & validation   |   mise a jour : 2 octobre 2026) Tj ET
+BT 0.0 g /F2 11 Tf 50 750 Td (Avancement global : 4 / 28 taches) Tj ET
+0.3 0.3 0.3 RG 0.8 w 50 736 495 8 re S
+0.18 0.55 0.34 rg 50 736 70.71428571428571 8 re f
+0.3 0.3 0.3 RG 0.8 w 50 736 70.71428571428571 8 re S
+0.93 0.95 1.0 rg 50 678 495 44 re f
+0.4 0.5 0.8 RG 0.8 w 50 678 495 44 re S
+BT 0.0 g /F2 11 Tf 58 710 Td (Prochaine etape) Tj ET
+BT 0.0 g /F1 10 Tf 58 695 Td (Ecrire struct Environnement::Etat dans environnement.cpp \(champs seulement,) Tj ET
+BT 0.0 g /F1 10 Tf 58 682 Td (un commentaire par champ\), puis la faire relire avant d'attaquer le constructeur.) Tj ET
+BT 0.0 g /F2 13 Tf 50 653 Td (1. Roue cyclique \(roue.cpp\)) Tj ET
+BT 0.4 g /F2 11 Tf 505 653 Td (4/4) Tj ET
+0.7 G 0.5 w 50 647 m 545 647 l S
+0.18 0.55 0.34 rg 52 631 9 9 re f
+0.3 0.3 0.3 RG 0.8 w 52 631 9 9 re S
+BT 0.45 g /F1 10 Tf 70 632 Td (roue_avancer : bouclage dans [0, n-1], pas negatifs geres) Tj ET
+BT 0.4 g /F1 8 Tf 495 632 Td (fait) Tj ET
+0.18 0.55 0.34 rg 52 615 9 9 re f
+0.3 0.3 0.3 RG 0.8 w 52 615 9 9 re S
+BT 0.45 g /F1 10 Tf 70 616 Td (roue_distance : plus court cote, dans [0, n/2]) Tj ET
+BT 0.4 g /F1 8 Tf 495 616 Td (fait) Tj ET
+0.18 0.55 0.34 rg 52 599 9 9 re f
+0.3 0.3 0.3 RG 0.8 w 52 599 9 9 re S
+BT 0.45 g /F1 10 Tf 70 600 Td (Doc des deux fonctions + #include <algorithm>) Tj ET
+BT 0.4 g /F1 8 Tf 495 600 Td (fait) Tj ET
+0.18 0.55 0.34 rg 52 583 9 9 re f
+0.3 0.3 0.3 RG 0.8 w 52 583 9 9 re S
+BT 0.45 g /F1 10 Tf 70 584 Td (Commit) Tj ET
+BT 0.4 g /F1 8 Tf 495 584 Td (fait) Tj ET
+BT 0.0 g /F2 13 Tf 50 556 Td (2. Environnement / simulateur \(environnement.cpp\)) Tj ET
+BT 0.4 g /F2 11 Tf 505 556 Td (0/7) Tj ET
+0.7 G 0.5 w 50 550 m 545 550 l S
+0.3 0.3 0.3 RG 0.8 w 52 534 9 9 re S
+BT 0.0 g /F1 10 Tf 70 535 Td (Ajouter environnement.o a ROBOT dans le Makefile) Tj ET
+BT 0.4 g /F1 8 Tf 495 535 Td (a faire) Tj ET
+0.9 0.6 0.1 rg 52 518 9 9 re f
+0.3 0.3 0.3 RG 0.8 w 52 518 9 9 re S
+BT 0.0 g /F1 10 Tf 70 519 Td (struct Environnement::Etat : grille, robot, selecteur, casiers 2D, positions,) Tj ET
+BT 0.4 g /F1 8 Tf 495 519 Td (en cours) Tj ET
+BT 0.0 g /F1 10 Tf 70 506 Td (resident vise, objet porte) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 489 9 9 re S
+BT 0.0 g /F1 10 Tf 70 490 Td (Constructeur : lire carte + armoire \(paire_entiers, casiers -> grille 2D\)) Tj ET
+BT 0.4 g /F1 8 Tf 495 490 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 473 9 9 re S
+BT 0.0 g /F1 10 Tf 70 474 Td (connaissances\(\) : tout SAUF la grille et les objets) Tj ET
+BT 0.4 g /F1 8 Tf 495 474 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 457 9 9 re S
+BT 0.0 g /F1 10 Tf 70 458 Td (percevoir\(\) : 4 voisins N/S/E/O, devant_armoire, contenu_casier) Tj ET
+BT 0.4 g /F1 8 Tf 495 458 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 441 9 9 re S
+BT 0.0 g /F1 10 Tf 70 442 Td (viser_resident\(\), robot\(\), selecteur\(\)) Tj ET
+BT 0.4 g /F1 8 Tf 495 442 Td (a faire) Tj ET
+0.8 0.2 0.2 rg 52 425 9 9 re f
+0.3 0.3 0.3 RG 0.8 w 52 425 9 9 re S
+BT 0.0 g /F1 10 Tf 70 426 Td (executer\(\) : legalite des 7 actions \(section 3.4\), CHERCHER avec bouclage des) Tj ET
+BT 0.4 g /F1 8 Tf 495 426 Td (bloque) Tj ET
+BT 0.0 g /F1 10 Tf 70 413 Td (colonnes \(annexe C\) -> besoin du texte de l'enonce) Tj ET
+BT 0.0 g /F2 13 Tf 50 385 Td (3. Validation des fichiers \(section 5.6, module a part\)) Tj ET
+BT 0.4 g /F2 11 Tf 505 385 Td (0/8) Tj ET
+0.7 G 0.5 w 50 379 m 545 379 l S
+0.3 0.3 0.3 RG 0.8 w 52 363 9 9 re S
+BT 0.0 g /F1 10 Tf 70 364 Td (Fichier absent / illisible / pas UTF-8, JSON invalide) Tj ET
+BT 0.4 g /F1 8 Tf 495 364 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 347 9 9 re S
+BT 0.0 g /F1 10 Tf 70 348 Td (Champ obligatoire absent ou mauvais type \(4 fichiers\)) Tj ET
+BT 0.4 g /F1 8 Tf 495 348 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 331 9 9 re S
+BT 0.0 g /F1 10 Tf 70 332 Td (Grille non rectangulaire, dimensions incoherentes, position hors grille) Tj ET
+BT 0.4 g /F1 8 Tf 495 332 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 315 9 9 re S
+BT 0.0 g /F1 10 Tf 70 316 Td (Symboles P / A / D / R coherents avec les positions) Tj ET
+BT 0.4 g /F1 8 Tf 495 316 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 299 9 9 re S
+BT 0.0 g /F1 10 Tf 70 300 Td (Residents en double, scenario d'une autre carte, resident absent) Tj ET
+BT 0.4 g /F1 8 Tf 495 300 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 283 9 9 re S
+BT 0.0 g /F1 10 Tf 70 284 Td (Casiers : hors armoire, doublon, etiquette incoherente, casier_depart hors armoire) Tj ET
+BT 0.4 g /F1 8 Tf 495 284 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 267 9 9 re S
+BT 0.0 g /F1 10 Tf 70 268 Td (Dictionnaire : emotion/intensite inconnue, mot en double) Tj ET
+BT 0.4 g /F1 8 Tf 495 268 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 251 9 9 re S
+BT 0.0 g /F1 10 Tf 70 252 Td (Erreur -> message stderr, code retour non nul, AUCUNE trace ecrite) Tj ET
+BT 0.4 g /F1 8 Tf 495 252 Td (a faire) Tj ET
+BT 0.0 g /F2 13 Tf 50 224 Td (4. Affichage texte \(debogage + video\)) Tj ET
+BT 0.4 g /F2 11 Tf 505 224 Td (0/1) Tj ET
+0.7 G 0.5 w 50 218 m 545 218 l S
+0.3 0.3 0.3 RG 0.8 w 52 202 9 9 re S
+BT 0.0 g /F1 10 Tf 70 203 Td (Grille redessinee a chaque pas : robot + murs deja decouverts) Tj ET
+BT 0.4 g /F1 8 Tf 495 203 Td (a faire) Tj ET
+BT 0.0 g /F2 13 Tf 50 175 Td (5. Tests) Tj ET
+BT 0.4 g /F2 11 Tf 505 175 Td (0/3) Tj ET
+0.7 G 0.5 w 50 169 m 545 169 l S
+0.3 0.3 0.3 RG 0.8 w 52 153 9 9 re S
+BT 0.0 g /F1 10 Tf 70 154 Td (Test 4 : selecteur de l'armoire, bouclage colonne 7 <-> 0) Tj ET
+BT 0.4 g /F1 8 Tf 495 154 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 137 9 9 re S
+BT 0.0 g /F1 10 Tf 70 138 Td (Test 6 : un fichier casse par categorie de 5.6) Tj ET
+BT 0.4 g /F1 8 Tf 495 138 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 121 9 9 re S
+BT 0.0 g /F1 10 Tf 70 122 Td (Test 7 : resident mure sur une petite grille \(avec Axel\)) Tj ET
+BT 0.4 g /F1 8 Tf 495 122 Td (a faire) Tj ET
+BT 0.0 g /F2 13 Tf 50 94 Td (6. Ensemble avec Axel \(fin de projet\)) Tj ET
+BT 0.4 g /F2 11 Tf 505 94 Td (0/5) Tj ET
+0.7 G 0.5 w 50 88 m 545 88 l S
+0.3 0.3 0.3 RG 0.8 w 52 72 9 9 re S
+BT 0.0 g /F1 10 Tf 70 73 Td (main.cpp : boucle Environnement <-> Agent, trace, resume) Tj ET
+BT 0.4 g /F1 8 Tf 495 73 Td (a faire) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 1147 >>
+stream
+0.3 0.3 0.3 RG 0.8 w 52 791 9 9 re S
+BT 0.0 g /F1 10 Tf 70 792 Td (Relecture croisee : agent.cpp, graphe.cpp, carte_robot.cpp) Tj ET
+BT 0.4 g /F1 8 Tf 495 792 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 775 9 9 re S
+BT 0.0 g /F1 10 Tf 70 776 Td (Rapport 3 pages \(architecture, replanification, repli, 3 echecs\)) Tj ET
+BT 0.4 g /F1 8 Tf 495 776 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 759 9 9 re S
+BT 0.0 g /F1 10 Tf 70 760 Td (Video 1 min 30 \(robot qui se cogne et replanifie\)) Tj ET
+BT 0.4 g /F1 8 Tf 495 760 Td (a faire) Tj ET
+0.3 0.3 0.3 RG 0.8 w 52 743 9 9 re S
+BT 0.0 g /F1 10 Tf 70 744 Td (README + commande de test, rendu.json \(C++, make, commande, video\)) Tj ET
+BT 0.4 g /F1 8 Tf 495 744 Td (a faire) Tj ET
+0.18 0.55 0.34 rg 50 715 9 9 re f
+0.3 0.3 0.3 RG 0.8 w 50 715 9 9 re S
+BT 0.3 g /F1 9 Tf 64 716 Td (fait) Tj ET
+0.9 0.6 0.1 rg 140 715 9 9 re f
+0.3 0.3 0.3 RG 0.8 w 140 715 9 9 re S
+BT 0.3 g /F1 9 Tf 154 716 Td (en cours) Tj ET
+0.3 0.3 0.3 RG 0.8 w 230 715 9 9 re S
+BT 0.3 g /F1 9 Tf 244 716 Td (a faire) Tj ET
+0.8 0.2 0.2 rg 320 715 9 9 re f
+0.3 0.3 0.3 RG 0.8 w 320 715 9 9 re S
+BT 0.3 g /F1 9 Tf 334 716 Td (bloque) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000006613 00000 n 
+0000006749 00000 n 
+0000007948 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+8084
+%%EOF
