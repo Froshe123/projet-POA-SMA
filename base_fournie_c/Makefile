@@ -2,11 +2,8 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -g
 
 BASE = json.o reconfort_io.o
-<<<<<<< Updated upstream
-ROBOT = types.o carte_robot.o graphe.o dictionnaire.o roue.o choix_casier.o
-=======
-ROBOT = types.o carte_robot.o graphe.o dictionnaire.o roue.o environnement.o
->>>>>>> Stashed changes
+
+ROBOT = types.o carte_robot.o graphe.o dictionnaire.o roue.o choix_casier.o environnement.o
 
 all: demo test_graphe $(ROBOT)
 
