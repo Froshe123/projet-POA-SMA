@@ -1,4 +1,4 @@
-#include "types.h"
+#include "types.hpp"
 
 bool pos_egales(Pos a, Pos b) {
     return a.l == b.l && a.c == b.c;

@@ -1,0 +1,4 @@
+# fichiers produits par make
+*.o
+base_fournie_c/demo
+base_fournie_c/test_graphe

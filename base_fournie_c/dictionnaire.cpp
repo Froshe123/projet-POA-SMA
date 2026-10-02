@@ -1,42 +1,43 @@
-#include <string.h>
-#include "dictionnaire.h"
-#include "reconfort_io.h"
+#include "dictionnaire.hpp"
+#include "reconfort_io.hpp"
 
 // Fonction pour chercher un mot dans le dictionnaire
 
-const JsonValue *chercher_mot(const JsonValue *dictionnaire, const char *mot)
+const JsonValue *chercher_mot(const JsonValue &dictionnaire, const std::string &mot)
 {
-    JsonValue *entrees = json_get(dictionnaire, "entrees");
-    for (size_t i = 0; i < json_taille(entrees); i++) {
-        JsonValue *entree = json_index(entrees, i);
-        JsonValue *formes = json_get(entree, "formes");
-        for (size_t j = 0; j < json_taille(formes); j++) {
-            const char *forme = json_chaine(json_index(formes, j));
-            if (forme != NULL && strcmp(forme, mot) == 0) {
+    const JsonValue *entrees = dictionnaire.get("entrees");
+    if (entrees == nullptr) {
+        return nullptr;
+    }
+    for (std::size_t i = 0; i < entrees->taille(); i++) {
+        const JsonValue *entree = entrees->index(i);
+        const JsonValue *formes = entree->get("formes");
+        if (formes == nullptr) {
+            continue;
+        }
+        for (std::size_t j = 0; j < formes->taille(); j++) {
+            const std::string *forme = formes->index(j)->chaine();
+            if (forme != nullptr && *forme == mot) {
                 return entree;
             }
         }
     }
-    return NULL;
+    return nullptr;
 }
 
-Emotion lire_emotion(const JsonValue *dictionnaire, const char *message)
+Emotion lire_emotion(const JsonValue &dictionnaire, const std::string &message)
 {
-    Emotion resultat = { false, NULL, NULL };
+    Emotion resultat;
 
-    int nb_mots = 0;
-    char **mots = normaliser(message, &nb_mots);
-
-    for (int i = 0; i < nb_mots; i++) {
-        const JsonValue *entree = chercher_mot(dictionnaire, mots[i]);
-        if (entree != NULL) {
+    for (const std::string &mot : normaliser(message)) {
+        const JsonValue *entree = chercher_mot(dictionnaire, mot);
+        if (entree != nullptr) {
             resultat.trouvee = true;
-            resultat.emotion = json_get_chaine(entree, "emotion", "");
-            resultat.intensite = json_get_chaine(entree, "intensite", "");
+            resultat.emotion = entree->get_chaine("emotion", "");
+            resultat.intensite = entree->get_chaine("intensite", "");
             break;
         }
     }
 
-    normaliser_liberer(mots, nb_mots);
     return resultat;
 }

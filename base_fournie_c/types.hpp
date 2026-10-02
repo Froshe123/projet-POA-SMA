@@ -1,15 +1,13 @@
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef TYPES_HPP
+#define TYPES_HPP
 
-#include <stdbool.h>
-
-typedef struct {
+struct Pos {
     int l;   /* ligne   */
     int c;   /* colonne */
-} Pos;
+};
 
 
-#define DIRS "NSEO"
+constexpr char DIRS[] = "NSEO";
 
 
 bool pos_egales(Pos a, Pos b);

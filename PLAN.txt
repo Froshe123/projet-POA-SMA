@@ -24,14 +24,14 @@ chemin : networkx, scipy.sparse.csgraph, igraph interdits) :
   - une structure cyclique pour la roue de Plutchik et les colonnes de
     l'armoire (meme logique, meme code si possible).
 
-Comme demo.c ne simule rien, il faut en plus ecrire un ENVIRONNEMENT /
+Comme demo.cpp ne simule rien, il faut en plus ecrire un ENVIRONNEMENT /
 SIMULATEUR : lui seul a le droit de lire le champ "grille" de la carte et le
 champ "objet" des casiers. Il calcule la perception a chaque tour, applique
 les actions, verifie leur legalite, et alimente la boucle. L'agent, lui, ne
 voit jamais ces deux champs (interdit verifie a la correction, avec perte des
 points fonctionnels en cas d'infraction).
 
-Contrat d'appel (section 2), a respecter par main.c :
+Contrat d'appel (section 2), a respecter par main.cpp :
 
   - exactement 4 arguments : <carte> <scenario> <dossier donnees> <trace> ;
   - aucun chemin code en dur : l'armoire se charge depuis
@@ -59,7 +59,7 @@ Sans cette interface fixee au depart, l'integration finale sera penible.
 
 -------------------------------------------------------------------------------
 ELIOTT (A) -- "Monde & validation"
-Fichiers : environnement.c/.h, roue.c/.h
+Fichiers : environnement.cpp/.hpp, roue.cpp/.hpp
 -------------------------------------------------------------------------------
 
   - Simulateur : charge la carte reelle (grille incluse), calcule la
@@ -75,11 +75,10 @@ Fichiers : environnement.c/.h, roue.c/.h
     message comprehensible sur stderr, aucune trace ecrite) :
       * fichier absent, non lisible, ou non encode en UTF-8 ;
       * JSON syntaxiquement invalide ;
-      * format ou version inattendus (deja fait par reconfort_io.c) ;
+      * format ou version inattendus (deja fait par reconfort_io.cpp) ;
       * champ obligatoire absent, ou du mauvais type (dans les 4 fichiers) ;
       * grille non rectangulaire, ou dimensions annoncees incoherentes
-        avec la grille ; grille plus grande que HAUTEUR_MAX/LARGEUR_MAX
-        (carte_robot.h) rejetee proprement plutot que de deborder ;
+        avec la grille ;
       * position hors de la grille ;
       * resident, armoire, dictionnaire ou depart du robot dont la position
         ne correspond pas au symbole attendu dans la grille (P, A, D, R) ;
@@ -104,7 +103,7 @@ Fichiers : environnement.c/.h, roue.c/.h
 
 -------------------------------------------------------------------------------
 AXEL (B) -- "Agent & decision"
-Fichiers : carte_mentale.c/.h, graphe.c/.h, agent.c/.h
+Fichiers : carte_robot.cpp/.hpp, graphe.cpp/.hpp, dictionnaire.cpp/.hpp, agent.cpp/.hpp
 -------------------------------------------------------------------------------
 
   - Carte mentale distincte de la grille reelle, hypothese optimiste (une
@@ -158,16 +157,16 @@ Fichiers : carte_mentale.c/.h, graphe.c/.h, agent.c/.h
 A LA FIN, ENSEMBLE
 -------------------------------------------------------------------------------
 
-  - main.c : boucle d'integration qui relie Environnement et Agent, tour
+  - main.cpp : boucle d'integration qui relie Environnement et Agent, tour
     par tour, jusqu'a epuisement du scenario, puis ecrit la trace :
       * t numerote a partir de 0 sur toute la simulation ;
       * position et casier AVANT l'action, perception et contenu_casier
         reels (verifies a la correction) ;
       * une livraison par demande, reussie ou non, avec pas_utilises
-        (compte par main.c, absent de Bilan) ;
+        (compte par main.cpp, absent de Bilan) ;
       * le resume (demandes, reussies, echecs, pas_total).
-  - Relecture croisee : Eliott relit agent.c/graphe.c/carte_robot.c, Axel
-    relit environnement.c/roue.c. En soutenance, "c'est la partie de mon
+  - Relecture croisee : Eliott relit agent.cpp/graphe.cpp/carte_robot.cpp, Axel
+    relit environnement.cpp/roue.cpp. En soutenance, "c'est la partie de mon
     binome" vaut zero : chacun doit pouvoir expliquer tout le code.
   - Test 7 (resident inaccessible) : grille ecrite par Eliott, mais la
     preuve repose sur l'echec du BFS d'Axel -> a ecrire ensemble.
@@ -189,7 +188,7 @@ A LA FIN, ENSEMBLE
   - README (squelette dans base_fournie_c/MODELE_README.md) : comment
     lancer, comment tester, ce qui marche, ce qui ne marche pas.
   - README : indiquer la commande qui lance les tests.
-  - rendu.json : remplir equipe, "langage": "C", "preparation" avec la
+  - rendu.json : remplir equipe, "langage": "C++", "preparation" avec la
     compilation (ex. [["make"]]), "commande" avec l'executable produit,
     et "video". Le modele actuel est encore celui de Python.
   - Git : commits reguliers, chacun avec son propre compte, messages

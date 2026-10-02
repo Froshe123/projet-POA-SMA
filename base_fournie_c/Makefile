@@ -1,15 +1,21 @@
-CC = cc
-CFLAGS = -std=c11 -Wall -Wextra -g
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -g
 
-OBJETS = json.o reconfort_io.o demo.o
+BASE = json.o reconfort_io.o
+ROBOT = types.o carte_robot.o graphe.o dictionnaire.o roue.o
 
-demo: $(OBJETS)
-	$(CC) $(CFLAGS) -o $@ $(OBJETS)
+all: demo test_graphe $(ROBOT)
 
-%.o: %.c json.h reconfort_io.h
-	$(CC) $(CFLAGS) -c -o $@ $<
+demo: $(BASE) demo.o
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+test_graphe: types.o carte_robot.o graphe.o test_graphe.o
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+%.o: %.cpp $(wildcard *.hpp)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
-	rm -f demo $(OBJETS)
+	rm -f demo test_graphe *.o
 
-.PHONY: clean
+.PHONY: all clean
