@@ -50,8 +50,8 @@ Environnement::Environnement(const JsonValue &carte, const JsonValue &armoire)
     etat->pos_robot = etat->depart_robot;
     etat->pos_selecteur = etat->casier_depart;
     
+    // Lire les résidents depuis le JSON et les stocker dans l'état
     const JsonValue &residents_json = *carte.get("residents");
-
     for (size_t i = 0; i < residents_json.taille(); i++)
     {
         const JsonValue &resident_json = *residents_json.index(i);
@@ -61,5 +61,29 @@ Environnement::Environnement(const JsonValue &carte, const JsonValue &armoire)
         etat->residents.push_back(res);
         
     }
+
+    // Lire l'armoire depuis le JSON et la stocker dans l'état
+    size_t n_ligne = armoire.get("intensites")->taille(); // nombre de lignes de l'armoire
+    size_t n_colonne = armoire.get("emotions")->taille(); // nombre de colonnes de l'armoire
+    std::vector<std::optional<std::string>> ligne_armoire(n_colonne); // initialiser une ligne vide
+    etat->armoire.assign(n_ligne, ligne_armoire); // initialiser l'armoire avec des lignes vides
+    
+    // Remplir l'armoire avec les objets depuis le JSON
+    const JsonValue &casier_json = *armoire.get("casiers");
+    for (size_t i = 0; i < casier_json.taille(); i++)
+    {
+        const JsonValue &casier = *casier_json.index(i);
+        int l; 
+        int c;
+        l = casier.get_nombre("ligne");
+        c = casier.get_nombre("colonne");
+        const JsonValue &objet = *casier.get("objet");
+        if (!objet.est_nul())
+        {
+            etat->armoire[l][c] = *objet.chaine(); // case avec un objet
+
+        }
+    }
+
 
 }
