@@ -65,25 +65,35 @@ Environnement::Environnement(const JsonValue &carte, const JsonValue &armoire)
     // Lire l'armoire depuis le JSON et la stocker dans l'état
     size_t n_ligne = armoire.get("intensites")->taille(); // nombre de lignes de l'armoire
     size_t n_colonne = armoire.get("emotions")->taille(); // nombre de colonnes de l'armoire
+
     std::vector<std::optional<std::string>> ligne_armoire(n_colonne); // initialiser une ligne vide
     etat->armoire.assign(n_ligne, ligne_armoire); // initialiser l'armoire avec des lignes vides
     
     // Remplir l'armoire avec les objets depuis le JSON
-    const JsonValue &casier_json = *armoire.get("casiers");
-    for (size_t i = 0; i < casier_json.taille(); i++)
+    const JsonValue &casiers_json = *armoire.get("casiers");
+    for (size_t i = 0; i < casiers_json.taille(); i++)
     {
-        const JsonValue &casier = *casier_json.index(i);
-        int l; 
-        int c;
-        l = casier.get_nombre("ligne");
-        c = casier.get_nombre("colonne");
+        const JsonValue &casier = *casiers_json.index(i);
+        int l = casier.get_nombre("ligne"); 
+        int c = casier.get_nombre("colonne");
         const JsonValue &objet = *casier.get("objet");
-        if (!objet.est_nul())
+        if (objet.est_chaine())
         {
             etat->armoire[l][c] = *objet.chaine(); // case avec un objet
 
         }
     }
-
-
 }
+
+    Connaissances Environnement::connaissances() const
+    {
+        Connaissances k;
+        k.hauteur = etat->grille.size();
+        k.largeur = etat->grille.empty() ? 0 : etat->grille[0].size();
+        k.depart = etat->depart_robot;
+        k.armoire = etat->pos_armoire;
+        k.dictionnaire = etat->pos_dictionnaire;
+        k.residents = etat->residents;
+        k.casier_depart = etat->casier_depart;
+        return k;
+    }
