@@ -85,8 +85,20 @@ Environnement::Environnement(const JsonValue &carte, const JsonValue &armoire)
     }
 }
 
-    Connaissances Environnement::connaissances() const
-    {
+    Pos Environnement::robot() const {
+        return etat->pos_robot;
+    }
+
+    Pos Environnement::selecteur() const {
+        return etat->pos_selecteur;
+    }
+
+    void Environnement::viser_resident(Pos resident) {
+        etat->resident_vise = resident;
+    }
+
+
+Connaissances Environnement::connaissances() const{
         Connaissances k;
         k.hauteur = etat->grille.size();
         k.largeur = etat->grille.empty() ? 0 : etat->grille[0].size();
@@ -96,4 +108,6 @@ Environnement::Environnement(const JsonValue &carte, const JsonValue &armoire)
         k.residents = etat->residents;
         k.casier_depart = etat->casier_depart;
         return k;
-    }
+}
+
+
