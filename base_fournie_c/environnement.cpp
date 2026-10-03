@@ -110,4 +110,49 @@ Connaissances Environnement::connaissances() const{
         return k;
 }
 
+std::string nom_case (char signe){
+    switch (signe)
+    {
+    case '#' :
+        return "mur";
+
+    case '.' : 
+        return "libre";
+    
+    case 'A' : 
+        return "armoire";
+    
+    case 'D' : 
+        return "dictionnaire";
+
+    case 'P' : 
+        return "resident";
+        
+    case 'R' : 
+        return "libre";//la case de départ est une case libre
+
+    default:
+        return "mur";// on evite les cases inconnues
+    }
+}
+
+PerceptionRobot Environnement::percevoir() const{
+    char direction;
+    PerceptionRobot p;
+
+    for (size_t i = 0; i <=3; i++){
+        direction = DIRS[i]; //NSEO
+        Pos case_voisine = voisin(etat->pos_robot,direction); // donne la case voisine dans la direction DIRS[i]
+        char char_grille = etat->grille[case_voisine.l][case_voisine.c]; //donne le char dans cette case voisine
+        p.voisins[i] = nom_case(char_grille); // renvoie le type de la case voisine
+        if (p.voisins[i].compare("armoire") == 0){
+            p.devant_armoire = true;
+        }
+    }
+    if (p.devant_armoire){
+        p.contenu_casier = etat ->armoire[etat->pos_selecteur.l][etat->pos_selecteur.c];
+    }
+
+    return p;
+} 
 

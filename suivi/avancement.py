@@ -33,8 +33,8 @@ ELIOTT = [
  ("Environnement", "Destructeur ~Environnement()", FAIT, "= default, après la struct"),
  ("Environnement", "Constructeur (lecture carte + armoire)", FAIT, "grille, 6 positions, résidents, armoire 3x8 (casiers null gérés)"),
  ("Environnement", "connaissances()", FAIT, "tout SAUF la grille et les objets"),
- ("Environnement", "percevoir()", TODO, "4 voisins N/S/E/O, devant_armoire, contenu_casier"),
- ("Environnement", "viser_resident(), robot(), selecteur()", COURS, ""),
+ ("Environnement", "percevoir()", FAIT, "4 voisins N/S/E/O, devant_armoire, contenu_casier"),
+ ("Environnement", "viser_resident(), robot(), selecteur()", FAIT, ""),
  ("Environnement", "executer() : légalité des actions", BLOQUE, "section 3.4 + annexe C à relire"),
  ("Validation 5.6", "Fichier absent / illisible / pas UTF-8, JSON invalide", TODO, ""),
  ("Validation 5.6", "Champ obligatoire absent ou mauvais type", TODO, "dans les 4 fichiers"),
@@ -60,7 +60,7 @@ ENSEMBLE = [
 
 PROCHAINES = [
  ("Axel", "memoire.cpp, puis agent.cpp (decider, appliquer, bilan)."),
- ("Eliott", "viser_resident() / robot() / selecteur(), puis percevoir()."),
+ ("Eliott", "executer() : légalité des 6 actions (section 3.4, annexe C)."),
 ]
 
 # --------------------------------------------------------------------------
