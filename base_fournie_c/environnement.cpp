@@ -1,6 +1,7 @@
 #include "interface.hpp"
 #include <memory>
 #include <optional>
+#include <cstdlib>
 
 struct Environnement::Etat {
     std::vector<std::string> grille; // grille[i][j] = case (i, j) de l'environnement
@@ -155,4 +156,112 @@ PerceptionRobot Environnement::percevoir() const{
 
     return p;
 } 
+
+bool adjacent(Pos a, Pos b){
+    int somme_ecart = abs(a.l - b.l) + abs(a.c - b.c);
+    return somme_ecart == 1;
+}
+
+bool Environnement::executer(const Action &action){
+    switch (action.type)
+    {
+    case TypeAction::AVANCER :{
+        Pos case_visee = voisin(etat->pos_robot,action.direction);
+        char char_case_visee = etat->grille[case_visee.l][case_visee.c];
+        if (nom_case(char_case_visee) != "libre"){
+            return false;
+        }
+        else{
+            etat->pos_robot = case_visee;
+            return true;
+        }
+    }
+    case TypeAction::ATTENDRE : {
+        return true;
+    }
+
+    case TypeAction::CONSULTER :{
+        return adjacent(etat->pos_robot,etat->pos_dictionnaire);
+    }
+
+    case TypeAction::CHERCHER :{
+        if (!adjacent(etat->pos_robot,etat->pos_armoire)){
+            return false;
+        }
+        else{
+            switch (action.direction)
+            {
+            case 'N':
+                if (etat->pos_selecteur.l == 0){
+                    return false;
+                }
+                else{
+                    etat->pos_selecteur.l -= 1;
+                    return true;
+                }
+            case 'S':
+                if (etat->pos_selecteur.l == int(etat-> armoire.size())-1){
+                    return false;
+                }
+                else{
+                    etat->pos_selecteur.l += 1;
+                    return true;
+                }
+            case 'E':
+                etat->pos_selecteur.c = roue_avancer(etat->pos_selecteur.c, 1,(int)etat->armoire[0].size());
+                return true;
+                
+            case 'O':
+                etat->pos_selecteur.c = roue_avancer(etat->pos_selecteur.c, -1,(int)etat->armoire[0].size());
+                return true;
+
+            default:
+                return false;
+            }
+        }
+    }
+    case TypeAction::PRENDRE :{
+        std::optional<std::string> &casier = etat->armoire[etat->pos_selecteur.l][etat->pos_selecteur.c];
+        if (!adjacent(etat->pos_robot,etat->pos_armoire)){//pas a coté de l'armoire
+            return false;
+        }
+        else if(!casier){// casier vide
+            return false;
+        }
+        else if(etat->objet_porte != std::nullopt){//le robot a deja un objet
+            return false;
+        }
+        else if(casier != action.objet){
+            return false;
+        }
+        etat->objet_porte = action.objet;
+        casier = std::nullopt;
+        return true;
+
+    }
+
+    case TypeAction::DONNER :{
+        if(!etat->resident_vise){//il n'y a pas de resident vise
+            return false;
+        }
+        if(!adjacent(etat->pos_robot,*etat->resident_vise)){//le resident vise n'est pas a coté
+            return false;
+        }
+        else if(etat->objet_porte == std::nullopt){//le robot n'a pas d'objet
+            return false;
+        }
+        else if(etat->objet_porte != action.objet){
+            return false;
+        }
+
+        etat->objet_porte = std::nullopt;
+        return true;
+    }
+
+    default:
+        return false;
+    }
+
+}
+
 

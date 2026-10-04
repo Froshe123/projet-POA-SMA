@@ -35,7 +35,7 @@ ELIOTT = [
  ("Environnement", "connaissances()", FAIT, "tout SAUF la grille et les objets"),
  ("Environnement", "percevoir()", FAIT, "4 voisins N/S/E/O, devant_armoire, contenu_casier"),
  ("Environnement", "viser_resident(), robot(), selecteur()", FAIT, ""),
- ("Environnement", "executer() : légalité des actions", BLOQUE, "section 3.4 + annexe C à relire"),
+ ("Environnement", "executer() : légalité des actions", FAIT, "les 6 actions ; FIN refusée (default)"),
  ("Validation 5.6", "Fichier absent / illisible / pas UTF-8, JSON invalide", TODO, ""),
  ("Validation 5.6", "Champ obligatoire absent ou mauvais type", TODO, "dans les 4 fichiers"),
  ("Validation 5.6", "Grille non rectangulaire, dimensions, position hors grille", TODO, ""),
@@ -60,7 +60,7 @@ ENSEMBLE = [
 
 PROCHAINES = [
  ("Axel", "memoire.cpp, puis agent.cpp (decider, appliquer, bilan)."),
- ("Eliott", "executer() : légalité des 6 actions (section 3.4, annexe C)."),
+ ("Eliott", "test 4 (sélecteur + bouclage), puis affichage texte, puis validation 5.6."),
 ]
 
 # --------------------------------------------------------------------------
